@@ -3,9 +3,15 @@ import java.util.*;
 public class SortingBubble {
     public static void main(String[] args) {
         final long N = 100_000_000;
+        final int A = 100000;
 
         System.out.println("Сортировка Collections.sort");
-        int[] array = new int[]{45, 11, 23, 45, 92358, 92, -12, 0, 98456, 94259023, 1, 35, 2, 9, 495};
+        int[] array = new int[A];
+        Random random = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = random.nextInt();
+            System.out.println("arr[" + i + "]=" + array[i]);
+        }
         List<Integer> list = new ArrayList<>(array.length);
         for (int i : array) {
             list.add(i);
@@ -28,10 +34,10 @@ public class SortingBubble {
                     array[i - 1] = temp;
                     isSorted = false;
                 }
-                printArray(array);
             }
         }
         long endTimeBubble = System.currentTimeMillis();
+        printArray(array);
         System.out.println("Collections sorting: " + (endTimeCollections - startTimeCollections) + " milliseconds");
         System.out.println("Bubble sorting: " + (endTimeBubble - startTimeBubble) + " milliseconds");
     }
